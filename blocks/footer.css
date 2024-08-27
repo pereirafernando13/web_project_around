@@ -1,0 +1,12 @@
+.footer {
+  max-width: 318px;
+  width: 100%;
+  padding: 67px 762px 60px 200px;
+}
+
+.footer__paragraph {
+  color: #545454;
+  font-size: 18px;
+  line-height: 21.78px;
+  font-weight: 400;
+}

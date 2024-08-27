@@ -1,0 +1,52 @@
+.profile {
+  max-width: 880px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.profile__image {
+  border-radius: 50%;
+  max-width: 120px;
+  margin-right: 30px;
+}
+
+.profile__info {
+  display: grid;
+  grid-template-areas:
+    "title button"
+    "profession .";
+}
+
+.profile__info-name {
+  max-width: 373px;
+  font-weight: 500;
+  font-size: 42px;
+  line-height: 48px;
+  color: #fff;
+  grid-area: title;
+  margin: 0;
+  margin-right: 18px;
+}
+
+.profile__info-profession {
+  max-width: 415px;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 21.78px;
+  color: #fff;
+  grid-area: profession;
+  margin: 21px 0 16px 0;
+}
+
+.profile__info-button {
+  max-width: 24px;
+  border-radius: 1px solid #fff;
+  grid-area: button;
+  margin-right: 165px;
+}
+
+.profile__button {
+  max-width: 150px;
+  border: 2px solid;
+}

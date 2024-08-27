@@ -1,0 +1,31 @@
+.elements {
+  padding-top: 50px;
+  max-width: 880px;
+  margin: 0 auto;
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  row-gap: 17px;
+  column-gap: 20px;
+}
+
+.elements__element {
+  max-width: 282px;
+  margin: 0;
+  background-color: #fff;
+  border-radius: 10px 10px 0 0;
+}
+
+.elements__element-image-fix {
+  width: 282px;
+  height: 282px;
+}
+
+.elements__element-title {
+  max-width: 246px;
+  color: #000000;
+  font-size: 24px;
+  font-weight: 900;
+  line-height: 29.05px;
+  text-align: center;
+}
