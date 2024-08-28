@@ -49,3 +49,20 @@
   height: 19px;
   border: none;
 }
+
+@media screen and (max-width: 1024px) {
+  .elements {
+    display: grid;
+    grid-template-columns: repeat(2, 282px);
+    row-gap: 17px;
+    column-gap: 20px;
+    justify-content: center;
+  }
+}
+
+@media screen and (max-width: 720px) {
+  .elements {
+    display: grid;
+    grid-template-columns: repeat(1, 282px);
+  }
+}
