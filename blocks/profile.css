@@ -17,6 +17,7 @@
     "title button"
     "profession .";
   align-items: center;
+  margin: 0;
 }
 
 .profile__info-name {
@@ -38,7 +39,7 @@
   line-height: 21.78px;
   color: #fff;
   grid-area: profession;
-  margin: 16px 0 0;
+  margin: 0;
 }
 
 .profile__info-button {
@@ -60,4 +61,58 @@
   background: transparent url(../images/profile__buton-vetor.png) no-repeat
     center;
   border: 2px solid #fff;
+}
+
+@media screen and (max-width: 720px) {
+  .profile {
+    max-width: 282px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .profile__image {
+    margin-top: 42px;
+    margin-bottom: 30px;
+    margin-right: 0;
+  }
+
+  .profile__info {
+    max-width: 282px;
+    display: grid;
+    grid-template-areas:
+      "title button"
+      "span";
+    row-gap: 14px;
+    column-gap: 10px;
+  }
+
+  .profile__info-name {
+    max-width: 224px;
+    width: 100%;
+    font-size: 22px;
+    line-height: 26.63px;
+    margin: 0;
+  }
+
+  .profile__info-profession {
+    max-width: 282px;
+    font-size: 14px;
+    line-height: 16.94px;
+    text-align: center;
+  }
+
+  .profile__info-button {
+    max-width: 18px;
+    width: 18px;
+    height: 18px;
+    margin: 0;
+  }
+
+  .profile__button {
+    max-width: 282px;
+    width: 100%;
+    margin: 36px auto;
+  }
 }
