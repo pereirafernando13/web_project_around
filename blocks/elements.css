@@ -10,10 +10,20 @@
 }
 
 .elements__element {
+  display: flex;
+  flex-direction: column;
   max-width: 282px;
+  width: 100%;
   margin: 0;
   background-color: #fff;
-  border-radius: 10px 10px 0 0;
+  border-radius: 10px 10px 10px 10px;
+}
+
+.elements__element-container-card {
+  display: flex;
+  justify-content: space-between;
+  border-radius: 0 0 10px 10px;
+  padding: 25px 15px 31px 21px;
 }
 
 .elements__element-image-fix {
@@ -28,4 +38,14 @@
   font-weight: 900;
   line-height: 29.05px;
   text-align: center;
+  margin: 0;
+}
+
+.elements__element-button-heart {
+  background: transparent url(../images/elements__image-heart-disble.png)
+    no-repeat;
+  background-size: contain;
+  width: 21px;
+  height: 19px;
+  border: none;
 }

@@ -1,18 +1,17 @@
 .header {
   max-width: 880px;
   margin: 0 auto;
-  width: 100%;
+}
+
+.header__nav {
+  border-bottom: 1px solid #545454;
   padding-top: 45px;
+  margin-bottom: 40px;
 }
-
-.header__imagem {
-  max-width: 172px;
-}
-
-hr {
-  border-color: #545454;
-  box-sizing: border-box;
-  width: 100%;
-  opacity: 70%;
-  margin: 41px 0 40px;
+.header__nav-image {
+  max-width: 173px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding-bottom: 41px;
 }

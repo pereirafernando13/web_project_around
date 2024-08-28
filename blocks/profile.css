@@ -2,7 +2,7 @@
   max-width: 880px;
   width: 100%;
   display: flex;
-  justify-content: center;
+  margin: 0 auto;
 }
 
 .profile__image {
@@ -16,10 +16,12 @@
   grid-template-areas:
     "title button"
     "profession .";
+  align-items: center;
 }
 
 .profile__info-name {
   max-width: 373px;
+  width: 100%;
   font-weight: 500;
   font-size: 42px;
   line-height: 48px;
@@ -36,17 +38,26 @@
   line-height: 21.78px;
   color: #fff;
   grid-area: profession;
-  margin: 21px 0 16px 0;
+  margin: 16px 0 0;
 }
 
 .profile__info-button {
   max-width: 24px;
-  border-radius: 1px solid #fff;
   grid-area: button;
   margin-right: 165px;
+  width: 24px;
+  height: 24px;
+  background: transparent url(../images/profile__info-button-vetor.png) center
+    no-repeat;
+  background-size: 10px 10px;
+  border: 1px solid #fff;
 }
 
 .profile__button {
   max-width: 150px;
-  border: 2px solid;
+  height: 50px;
+  width: 150px;
+  background: transparent url(../images/profile__buton-vetor.png) no-repeat
+    center;
+  border: 2px solid #fff;
 }
