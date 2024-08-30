@@ -42,7 +42,7 @@
   margin: 0;
 }
 
-.profile__info-button {
+.profile__info-button-edit {
   max-width: 24px;
   grid-area: button;
   margin-right: 165px;
