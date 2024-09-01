@@ -1,0 +1,64 @@
+.popup {
+  display: none;
+}
+
+.popup_change_display {
+  display: flex;
+  flex-direction: column;
+  max-width: 430px;
+  width: 100%;
+  background-color: #fff;
+  margin: 0 auto;
+  border-radius: 5px;
+  position: relative;
+}
+.popup__button-close {
+  background: url(../images/button__popup-close.png) no-repeat;
+  width: 40px;
+  height: 40px;
+  background-color: #000;
+  position: absolute;
+}
+
+.popup__header {
+  max-width: 430px;
+  width: 100%;
+  color: #000;
+  font-size: 24px;
+  font-weight: 900;
+  line-height: 29.05px;
+  max-width: 330px;
+  margin: 34px 64px 54px 36px;
+}
+
+.popup__form {
+  max-width: 430px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 29.74px;
+  margin-left: 36px;
+}
+
+.popup__form-input {
+  max-width: 358px;
+  border: none;
+  border-bottom: 1px solid #000;
+  font-size: 14px;
+  line-height: 16.94px;
+  font-weight: 400;
+  padding-bottom: 13.36px;
+}
+
+.popup__form-button-save {
+  max-width: 358px;
+  width: 100%;
+  font-size: 18px;
+  align-items: center;
+  line-height: 21.78px;
+  padding: 14px 18px;
+  margin: 48px 36px;
+  background-color: #000;
+  color: #fff;
+  border-radius: 2px solid #000;
+}
