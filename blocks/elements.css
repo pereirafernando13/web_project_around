@@ -50,6 +50,10 @@
   border: none;
 }
 
+.elements_element-button-heart-like {
+  background-image: url(../images/elements_element-button-heart-like.png);
+}
+
 @media screen and (max-width: 1024px) {
   .elements {
     display: grid;
