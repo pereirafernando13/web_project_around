@@ -11,10 +11,7 @@ const inputProfission = form.querySelector("#profission");
 const profileInfo = document.querySelector(".profile__info-name");
 const profileProfission = document.querySelector(".profile__info-profession");
 
-const buttonHeartLike = document.querySelector(
-  ".elements__element-button-heart"
-);
-const buttonHeartUnLike = document.querySelector(
+const buttonHeartLike = document.querySelectorAll(
   ".elements__element-button-heart"
 );
 
@@ -36,8 +33,10 @@ function updateProfileInfo(event) {
 }
 saveButtonProfile.addEventListener("click", updateProfileInfo);
 
-function heartLike() {
-  buttonHeartLike.classList.add("elements_element-button-heart-like");
+function heartLike(event) {
+  event.target.classList.toggle("elements__element_button-heart-like");
 }
 
-buttonHeartLike.addEventListener("click", heartLike);
+buttonHeartLike.forEach((buttonLike) => {
+  buttonLike.addEventListener("click", heartLike);
+});
