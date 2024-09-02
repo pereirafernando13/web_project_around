@@ -63,7 +63,7 @@
   border: 2px solid #fff;
 }
 
-@media screen and (max-width: 720px) {
+@media screen and (max-width: 920px) {
   .profile {
     max-width: 282px;
     width: 100%;
@@ -83,21 +83,18 @@
     display: grid;
     grid-template-areas:
       "title button"
-      "span";
+      "profession profession";
     row-gap: 14px;
     column-gap: 10px;
   }
 
   .profile__info-name {
-    max-width: 224px;
-    width: 100%;
     font-size: 22px;
     line-height: 26.63px;
     margin: 0;
   }
 
   .profile__info-profession {
-    max-width: 282px;
     font-size: 14px;
     line-height: 16.94px;
     text-align: center;
@@ -107,6 +104,10 @@
     max-width: 18px;
     width: 18px;
     height: 18px;
+    margin: 0;
+  }
+
+  .profile__info-button-edit {
     margin: 0;
   }
 
