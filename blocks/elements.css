@@ -41,6 +41,10 @@
   margin: 0;
 }
 
+.elements__element-button-heart:hover {
+  opacity: 50%;
+}
+
 .elements__element-button-heart {
   background: transparent url(../images/elements__image-heart-disble.png)
     no-repeat;
@@ -64,7 +68,7 @@
   }
 }
 
-@media screen and (max-width: 720px) {
+@media screen and (max-width: 920px) {
   .elements {
     display: grid;
     grid-template-columns: repeat(1, 282px);

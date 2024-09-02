@@ -42,6 +42,10 @@
   margin: 0;
 }
 
+.profile__info-button-edit:hover {
+  opacity: 60%;
+}
+
 .profile__info-button-edit {
   max-width: 24px;
   grid-area: button;
@@ -52,6 +56,10 @@
     no-repeat;
   background-size: 10px 10px;
   border: 1px solid #fff;
+}
+
+.profile__button:hover {
+  opacity: 60%;
 }
 
 .profile__button {
