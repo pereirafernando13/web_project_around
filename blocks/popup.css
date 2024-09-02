@@ -10,14 +10,16 @@
   background-color: #fff;
   margin: 0 auto;
   border-radius: 5px;
-  position: relative;
+  position: absolute;
+  left: 35.5%;
+  bottom: 48%;
 }
 .popup__button-close {
   background: url(../images/button__popup-close.png) no-repeat;
   width: 40px;
   height: 40px;
   background-color: #000;
-  position: absolute;
+  position: relative;
 }
 
 .popup__header {
