@@ -24,11 +24,11 @@
   top: 195px;
 }
 
-.popup__button-close:hover {
+.popup__form-button:hover {
   opacity: 60%;
 }
 
-.popup__button-close {
+.popup__form-button {
   background: url(../images/button__popup-close.png) no-repeat;
   width: 40px;
   height: 40px;

@@ -1,6 +1,6 @@
 const popup = document.querySelector(".popup");
 const editbutton = document.querySelector(".profile__info-button-edit");
-const closebutton = document.querySelector(".popup__button-close");
+const closebutton = document.querySelector(".popup__form-button");
 
 const saveButtonProfile = document.querySelector(".popup__form-button-save");
 
