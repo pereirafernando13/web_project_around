@@ -11,12 +11,40 @@
   </head>
   <body>
     <div class="page">
+      <div class="popup">
+        <div class="popup__container">
+          <h1 class="popup__header">Editar perfil</h1>
+          <form class="popup__form">
+            <button class="popup__form-button"></button>
+            <input
+              class="popup__form-input"
+              type="text"
+              placeholder="Nome"
+              value=""
+              id="name"
+            />
+            <input
+              class="popup__form-input"
+              type="text"
+              placeholder="Profissao"
+              value=""
+              id="profission"
+            />
+            <button type="submit" class="popup__form-button-save">
+              Salvar
+            </button>
+          </form>
+        </div>
+      </div>
+
       <header class="header">
-        <img
-          class="header__image"
-          src="./images/Vector.png"
-          alt="titulo da pagina"
-        />
+        <nav class="header__nav">
+          <img
+            class="header__nav-image"
+            src="./images/Vector.png"
+            alt="titulo da pagina"
+          />
+        </nav>
       </header>
       <section class="profile">
         <img
@@ -27,7 +55,7 @@
         <div class="profile__info">
           <h1 class="profile__info-name">Jacques Cousteau</h1>
           <p class="profile__info-profession">Explorador</p>
-          <button class="profile__info-button"></button>
+          <button class="profile__info-button-edit"></button>
         </div>
         <button class="profile__button"></button>
       </section>
@@ -36,9 +64,12 @@
           <img
             src="./images/image__vale-de-yosemite.png"
             alt="imagem de um vale"
-            class="elements__element-image"
+            class="elements__element-image elements__element-image-fix"
           />
-          <h2 class="elements__element-title">Vale de Yosemite</h2>
+          <div class="elements__element-container-card">
+            <h2 class="elements__element-title">Vale de Yosemite</h2>
+            <button class="elements__element-button-heart"></button>
+          </div>
         </div>
         <div class="elements__element">
           <img
@@ -46,7 +77,10 @@
             alt="imagem de um lago"
             class="elements__element-image"
           />
-          <h2 class="elements__element-title">Lago Louise</h2>
+          <div class="elements__element-container-card">
+            <h2 class="elements__element-title">Lago Louise</h2>
+            <button class="elements__element-button-heart"></button>
+          </div>
         </div>
         <div class="elements__element">
           <img
@@ -54,7 +88,10 @@
             alt="imagem de uma montanha"
             class="elements__element-image"
           />
-          <h2 class="elements__element-title">Montanhas Care...</h2>
+          <div class="elements__element-container-card">
+            <h2 class="elements__element-title">Montanhas Care...</h2>
+            <button class="elements__element-button-heart"></button>
+          </div>
         </div>
         <div class="elements__element">
           <img
@@ -62,7 +99,10 @@
             alt="montanha a noite"
             class="elements__element-image"
           />
-          <h2 class="elements__element-title">Latemar</h2>
+          <div class="elements__element-container-card">
+            <h2 class="elements__element-title">Latemar</h2>
+            <button class="elements__element-button-heart"></button>
+          </div>
         </div>
         <div class="elements__element">
           <img
@@ -70,7 +110,10 @@
             alt="imagem de um lago e montanha"
             class="elements__element-image"
           />
-          <h2 class="elements__element-title">Parque Nacional...</h2>
+          <div class="elements__element-container-card">
+            <h2 class="elements__element-title">Parque Nacional...</h2>
+            <button class="elements__element-button-heart"></button>
+          </div>
         </div>
         <div class="elements__element">
           <img
@@ -78,12 +121,16 @@
             alt="imagem do lago de braies"
             class="elements__element-image"
           />
-          <h2 class="elements__element-title">Lago di Braies</h2>
+          <div class="elements__element-container-card">
+            <h2 class="elements__element-title">Lago di Braies</h2>
+            <button class="elements__element-button-heart"></button>
+          </div>
         </div>
       </section>
       <footer class="footer">
         <p class="footer__paragraph">© 2024 Around The U.S.</p>
       </footer>
     </div>
+    <script src="./scripts/index.js"></script>
   </body>
 </html>
