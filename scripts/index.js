@@ -40,3 +40,60 @@ function heartLike(event) {
 buttonHeartLike.forEach((buttonLike) => {
   buttonLike.addEventListener("click", heartLike);
 });
+
+// pegar o array
+
+const initialCards = [
+  {
+    name: "Vale de Yosemite",
+    link: "https://practicum-content.s3.us-west-1.amazonaws.com/web-code/moved_yosemite.jpg",
+  },
+  {
+    name: "Lago Louise",
+    link: "https://practicum-content.s3.us-west-1.amazonaws.com/web-code/moved_lake-louise.jpg",
+  },
+  {
+    name: "Montanhas Carecas",
+    link: "https://practicum-content.s3.us-west-1.amazonaws.com/web-code/moved_bald-mountains.jpg",
+  },
+  {
+    name: "Latemar",
+    link: "https://practicum-content.s3.us-west-1.amazonaws.com/web-code/moved_latemar.jpg",
+  },
+  {
+    name: "Parque Nacional da Vanoise ",
+    link: "https://practicum-content.s3.us-west-1.amazonaws.com/web-code/moved_vanoise.jpg",
+  },
+  {
+    name: "Lago di Braies",
+    link: "https://practicum-content.s3.us-west-1.amazonaws.com/web-code/moved_lago.jpg",
+  },
+];
+
+//criar cada cartao (criar elemento html - template)
+function createCard(card) {
+  //pegar o template
+  const cardTemplate = document.querySelector("#element-template").content;
+  //fazer a copia
+  const elementCard = cardTemplate
+    .querySelector(".elements__element")
+    .cloneNode(true);
+  //pegar os elementos de dentro da copia
+  const cardTitle = elementCard.querySelector(".elements__element-title");
+  const cardImage = elementCard.querySelector(".elements__element-image");
+  const cardLink = elementCard.querySelector(".elements__element-image");
+  const cardTrash = elementCard.querySelector("elements-element-button-trash");
+  //popular os sub elementos
+  cardTitle.textContent = card.name;
+  cardImage.setAttribute("alt", card.name);
+  cardLink.setAttribute("src", card.link);
+
+  //pega a lista
+  const elements = document.querySelector(".elements");
+  //prepend
+  elements.prepend(elementCard);
+  return elementCard;
+}
+// Adicionar os cartoes a pagina
+initialCards.forEach(createCard);
+//deletar card
