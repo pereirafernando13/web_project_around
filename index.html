@@ -11,11 +11,12 @@
   </head>
   <body>
     <div class="page">
+      <!--Popup perfil-->
       <div class="popup">
         <div class="popup__container">
           <h1 class="popup__header">Editar perfil</h1>
           <form class="popup__form">
-            <button class="popup__form-button"></button>
+            <button class="popup__form-button-close"></button>
             <input
               class="popup__form-input"
               type="text"
@@ -32,6 +33,38 @@
             />
             <button type="submit" class="popup__form-button-save">
               Salvar
+            </button>
+          </form>
+        </div>
+      </div>
+
+      <!--Popup form add image-->
+
+      <div class="popup__image">
+        <div class="popup__container">
+          <h1 class="popup__header">Novo local</h1>
+          <form class="popup__form">
+            <button class="popup__form-button-close"></button>
+            <input
+              class="popup__form-input"
+              type="text"
+              placeholder="Título"
+              value=""
+              id="tittle"
+            />
+            <input
+              class="popup__form-input"
+              type="url"
+              placeholder="Link da imagem"
+              value=""
+              id="url"
+            />
+            <button
+              type="submit"
+              class="popup__form-button-save"
+              id="add-button"
+            >
+              Criar
             </button>
           </form>
         </div>

@@ -1,6 +1,7 @@
+// Variaveis PopuPerfil
 const popup = document.querySelector(".popup");
 const editbutton = document.querySelector(".profile__info-button-edit");
-const closebutton = document.querySelector(".popup__form-button");
+const closebutton = document.querySelector(".popup__form-button-close");
 
 const saveButtonProfile = document.querySelector(".popup__form-button-save");
 
@@ -15,6 +16,16 @@ const buttonHeartLike = document.querySelectorAll(
   ".elements__element-button-heart"
 );
 
+// Variaveis Popup Add Card
+const popupImage = document.querySelector(".popup__image");
+const addImageButton = document.querySelector(".profile__button");
+
+const inputTittle = document.querySelector("#tittle");
+const inputUrl = document.querySelector("#url");
+const saveButton = document.querySelector("#add-button");
+const cards = document.querySelector(".elements");
+
+// Abrir/fechar popperfil
 function openPopup() {
   popup.classList.add("popup_change_display");
 }
@@ -25,6 +36,17 @@ function closePopup() {
 }
 closebutton.addEventListener("click", closePopup);
 
+// Abrir/fechar Popup Cards
+function openPopupImg() {
+  popupImage.classList.add("popup_change_display");
+}
+addImageButton.addEventListener("click", openPopupImg);
+
+function closePopupImg() {
+  popupImage.classList.remove("popup_change_display");
+}
+
+// Atualizar dados do usuario
 function updateProfileInfo(event) {
   event.preventDefault();
   profileInfo.textContent = inputName.value;
@@ -33,6 +55,23 @@ function updateProfileInfo(event) {
 }
 saveButtonProfile.addEventListener("click", updateProfileInfo);
 
+//add card image
+function addCardImage(event) {
+  event.preventDefault();
+  if (inputTittle.value != "" && inputUrl.value != "") {
+    const newCard = createCard({
+      name: inputTittle.value,
+      link: inputUrl.value,
+    });
+    cards.prepend(newCard);
+    inputTittle.value = "";
+    inputUrl.value = "";
+  }
+  closePopupImg();
+}
+saveButton.addEventListener("click", addCardImage);
+
+// botao de like
 function heartLike(event) {
   event.target.classList.toggle("elements__element_button-heart-like");
 }
@@ -95,5 +134,9 @@ function createCard(card) {
   return elementCard;
 }
 // Adicionar os cartoes a pagina
-initialCards.forEach(createCard);
 //deletar card
+
+initialCards.forEach((card) => {
+  const newCard = createCard(card);
+  cards.prepend(newCard);
+});
