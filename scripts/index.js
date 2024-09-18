@@ -154,6 +154,14 @@ function createCard(card) {
         }
       });
     });
+
+  //remove card
+  elementCard
+    .querySelector(".elements-element-button-trash")
+    .addEventListener("click", (event) => {
+      event.target.parentElement.remove();
+    });
+
   return elementCard;
 }
 // Adicionar os cartoes a pagina
