@@ -46,16 +46,14 @@
 }
 
 .elements__element-button-heart {
-  background: transparent url(../images/elements__image-heart-disble.png)
-    no-repeat;
   background-size: contain;
   width: 21px;
   height: 19px;
   border: none;
 }
 
-.elements__element_button-heart-like {
-  background-image: url(../images/elements_element-button-heart-like.png);
+.elements__element-button-heart-liked {
+  display: none;
 }
 
 @media screen and (max-width: 1024px) {

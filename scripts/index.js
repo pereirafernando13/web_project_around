@@ -131,6 +131,29 @@ function createCard(card) {
   const elements = document.querySelector(".elements");
   //prepend
   elements.prepend(elementCard);
+
+  //botao like
+  elementCard
+    .querySelectorAll(".elements__element-button-heart")
+    .forEach((buttonHeart) => {
+      buttonHeart.addEventListener("click", (event) => {
+        if (event.target.classList.contains("elements__element-button-heart")) {
+          elementCard.querySelector(
+            ".elements__element-button-heart-liked"
+          ).style.display = "block";
+          elementCard.querySelector(
+            ".elements__element-button-heart"
+          ).style.display = "none";
+        } else {
+          elementCard.querySelector(
+            ".elements__element-button-heart"
+          ).style.display = "block";
+          elementCard.querySelector(
+            ".elements__element-button-heart-liked"
+          ).style.display = "none";
+        }
+      });
+    });
   return elementCard;
 }
 // Adicionar os cartoes a pagina
