@@ -165,8 +165,6 @@ function createCard(card) {
   return elementCard;
 }
 // Adicionar os cartoes a pagina
-//deletar card
-
 initialCards.forEach((card) => {
   const newCard = createCard(card);
   cards.prepend(newCard);
