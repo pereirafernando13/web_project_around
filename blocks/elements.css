@@ -17,6 +17,22 @@
   margin: 0;
   background-color: #fff;
   border-radius: 10px 10px 10px 10px;
+  position: relative;
+}
+
+.elements-element-button-trash:hover {
+  opacity: 50%;
+}
+
+.elements-element-button-trash {
+  background: transparent url(/images/button__Trash.png) no-repeat;
+  background-size: contain;
+  width: 18px;
+  height: 19.3px;
+  border: none;
+  position: absolute;
+  top: 18px;
+  right: 15px;
 }
 
 .elements__element-container-card {
@@ -29,6 +45,10 @@
 .elements__element-image-fix {
   width: 282px;
   height: 282px;
+}
+
+.elements__element-image {
+  border-radius: 10px 10px 0 0;
 }
 
 .elements__element-title {
@@ -46,16 +66,14 @@
 }
 
 .elements__element-button-heart {
-  background: transparent url(../images/elements__image-heart-disble.png)
-    no-repeat;
   background-size: contain;
   width: 21px;
   height: 19px;
   border: none;
 }
 
-.elements__element_button-heart-like {
-  background-image: url(../images/elements_element-button-heart-like.png);
+.elements__element-button-heart-liked {
+  display: none;
 }
 
 @media screen and (max-width: 1024px) {

@@ -11,11 +11,12 @@
   </head>
   <body>
     <div class="page">
+      <!--Popup perfil-->
       <div class="popup">
         <div class="popup__container">
           <h1 class="popup__header">Editar perfil</h1>
           <form class="popup__form">
-            <button class="popup__form-button"></button>
+            <button class="popup__form-button-close"></button>
             <input
               class="popup__form-input"
               type="text"
@@ -34,6 +35,48 @@
               Salvar
             </button>
           </form>
+        </div>
+      </div>
+
+      <!--Popup form add image-->
+      <div class="popup__image">
+        <div class="popup__container">
+          <h1 class="popup__header">Novo local</h1>
+          <form class="popup__form">
+            <button class="popup__form-button-close"></button>
+            <input
+              class="popup__form-input"
+              type="text"
+              placeholder="Título"
+              value=""
+              id="tittle"
+            />
+            <input
+              class="popup__form-input"
+              type="url"
+              placeholder="Link da imagem"
+              value=""
+              id="url"
+            />
+            <button
+              type="submit"
+              class="popup__form-button-save"
+              id="add-button"
+            >
+              Criar
+            </button>
+          </form>
+        </div>
+      </div>
+
+      <!--Popup Image-->
+      <div class="popup__imgfull">
+        <div class="popup__imgfull-card">
+          <div class="popup__imgfull-card-screen">
+            <button class="popup__imgfull-button-close"></button>
+            <img class="popup__imgfull-imgbig" src="" alt="" />
+            <p class="popup__imgfull-tittle"></p>
+          </div>
         </div>
       </div>
 
@@ -60,72 +103,24 @@
         <button class="profile__button"></button>
       </section>
       <section class="elements">
-        <div class="elements__element">
-          <img
-            src="./images/image__vale-de-yosemite.png"
-            alt="imagem de um vale"
-            class="elements__element-image elements__element-image-fix"
-          />
-          <div class="elements__element-container-card">
-            <h2 class="elements__element-title">Vale de Yosemite</h2>
-            <button class="elements__element-button-heart"></button>
+        <template id="element-template">
+          <div class="elements__element">
+            <button class="elements-element-button-trash"></button>
+            <img
+              src=""
+              alt=""
+              class="elements__element-image elements__element-image-fix"
+            />
+            <div class="elements__element-container-card">
+              <h2 class="elements__element-title">Vale de Yosemite</h2>
+              <img
+                class="elements__element-button-heart"
+                src="./images/elements__image-heart-disble.png"
+                alt="botao unlike"
+              />
+            </div>
           </div>
-        </div>
-        <div class="elements__element">
-          <img
-            src="./images/image__lago-louise.png"
-            alt="imagem de um lago"
-            class="elements__element-image"
-          />
-          <div class="elements__element-container-card">
-            <h2 class="elements__element-title">Lago Louise</h2>
-            <button class="elements__element-button-heart"></button>
-          </div>
-        </div>
-        <div class="elements__element">
-          <img
-            src="./images/image__montanas-care.png"
-            alt="imagem de uma montanha"
-            class="elements__element-image"
-          />
-          <div class="elements__element-container-card">
-            <h2 class="elements__element-title">Montanhas Care...</h2>
-            <button class="elements__element-button-heart"></button>
-          </div>
-        </div>
-        <div class="elements__element">
-          <img
-            src="./images/image__latemar.png"
-            alt="montanha a noite"
-            class="elements__element-image"
-          />
-          <div class="elements__element-container-card">
-            <h2 class="elements__element-title">Latemar</h2>
-            <button class="elements__element-button-heart"></button>
-          </div>
-        </div>
-        <div class="elements__element">
-          <img
-            src="./images/image_parque-nacional.png"
-            alt="imagem de um lago e montanha"
-            class="elements__element-image"
-          />
-          <div class="elements__element-container-card">
-            <h2 class="elements__element-title">Parque Nacional...</h2>
-            <button class="elements__element-button-heart"></button>
-          </div>
-        </div>
-        <div class="elements__element">
-          <img
-            src="./images/image_lago-di-brales.png"
-            alt="imagem do lago de braies"
-            class="elements__element-image"
-          />
-          <div class="elements__element-container-card">
-            <h2 class="elements__element-title">Lago di Braies</h2>
-            <button class="elements__element-button-heart"></button>
-          </div>
-        </div>
+        </template>
       </section>
       <footer class="footer">
         <p class="footer__paragraph">© 2024 Around The U.S.</p>
