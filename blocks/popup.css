@@ -114,15 +114,22 @@
   height: 100%;
 }
 
+.popup__imgfull-card-screen {
+  position: relative;
+}
+
+.popup__imgfull-button-close:hover {
+  opacity: 80%;
+}
+
 .popup__imgfull-button-close {
   background: transparent url(../images/button__popup-close.png) no-repeat;
+  border: none;
   width: 40px;
   height: 40px;
-  background-color: #000;
-  border: none;
   position: absolute;
-  top: 29px;
-  right: 310px;
+  top: -33px;
+  right: -35px;
 }
 
 .popup__imgfull-imgbig {
@@ -158,7 +165,7 @@
     margin: 0;
   }
 
-  .popup__button-close {
+  .popup__form-button-close {
     top: -200px;
     right: -1px;
   }
@@ -171,5 +178,17 @@
   .popup__form-button-save {
     max-width: 238px;
     margin: 46px 0;
+  }
+
+  .popup__imgfull-button-close {
+    width: 35px;
+    height: 35px;
+  }
+
+  .popup__imgfull-imgbig {
+    max-height: 240px;
+    max-width: 299px;
+    height: 75vh;
+    width: 75vw;
   }
 }

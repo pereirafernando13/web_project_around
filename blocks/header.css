@@ -8,6 +8,11 @@
   padding-top: 45px;
   margin-bottom: 40px;
 }
+
+.header__nav-image:hover {
+  opacity: 0%;
+}
+
 .header__nav-image {
   max-width: 173px;
   display: flex;
