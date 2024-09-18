@@ -25,6 +25,14 @@ const inputUrl = document.querySelector("#url");
 const saveButton = document.querySelector("#add-button");
 const cards = document.querySelector(".elements");
 
+//Variaveis PopupimgFull
+const closePopupImgFull = document.querySelector(
+  ".popup__imgfull-button-close"
+);
+const imgFull = document.querySelector(".popup__imgfull");
+const openImgFull = document.querySelector(".popup__imgfull-imgbig");
+const openImgFullTittle = document.querySelector(".popup__imgfull-tittle");
+
 // Abrir/fechar popperfil
 function openPopup() {
   popup.classList.add("popup_change_display");
@@ -45,6 +53,13 @@ addImageButton.addEventListener("click", openPopupImg);
 function closePopupImg() {
   popupImage.classList.remove("popup_change_display");
 }
+
+//Fechar PopupIMGfull
+
+function closeImgFull() {
+  imgFull.style.display = "none";
+}
+closePopupImgFull.addEventListener("click", closeImgFull);
 
 // Atualizar dados do usuario
 function updateProfileInfo(event) {
@@ -158,11 +173,20 @@ function createCard(card) {
       event.target.parentElement.remove();
     });
 
+  //Abrir/fechar PopupImgFull
+  elementCard
+    .querySelector(".elements__element-image")
+    .addEventListener("click", (event) => {
+      openImgFull.setAttribute("alt", card.name);
+      openImgFull.setAttribute("src", card.link);
+      openImgFullTittle.textContent = card.name;
+
+      imgFull.style.display = "block";
+    });
+
   return elementCard;
 }
 // Adicionar os cartoes a pagina
-//deletar card
-
 initialCards.forEach((card) => {
   const newCard = createCard(card);
   cards.prepend(newCard);
