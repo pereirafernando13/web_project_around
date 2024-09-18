@@ -134,25 +134,21 @@ function createCard(card) {
 
   //botao like
   elementCard
-    .querySelectorAll(".elements__element-button-heart")
-    .forEach((buttonHeart) => {
-      buttonHeart.addEventListener("click", (event) => {
-        if (event.target.classList.contains("elements__element-button-heart")) {
-          elementCard.querySelector(
-            ".elements__element-button-heart-liked"
-          ).style.display = "block";
-          elementCard.querySelector(
-            ".elements__element-button-heart"
-          ).style.display = "none";
-        } else {
-          elementCard.querySelector(
-            ".elements__element-button-heart"
-          ).style.display = "block";
-          elementCard.querySelector(
-            ".elements__element-button-heart-liked"
-          ).style.display = "none";
-        }
-      });
+    .querySelector(".elements__element-button-heart")
+    .addEventListener("click", (event) => {
+      if (
+        event.target.getAttribute("src") ===
+        "./images/elements__image-heart-disble.png"
+      ) {
+        return event.target.setAttribute(
+          "src",
+          "./images/elements_element-button-heart-like.png"
+        );
+      }
+      return event.target.setAttribute(
+        "src",
+        "./images/elements__image-heart-disble.png"
+      );
     });
 
   //remove card
