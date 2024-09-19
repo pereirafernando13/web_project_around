@@ -7,6 +7,7 @@
   grid-template-columns: repeat(3, 1fr);
   row-gap: 17px;
   column-gap: 20px;
+  min-height: 801.1px;
 }
 
 .elements__element {
@@ -59,6 +60,9 @@
   line-height: 29.05px;
   text-align: center;
   margin: 0;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 .elements__element-button-heart:hover {
