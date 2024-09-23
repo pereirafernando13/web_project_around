@@ -30,6 +30,9 @@
   grid-area: title;
   margin: 0;
   margin-right: 18px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 .profile__info-profession {
@@ -40,6 +43,9 @@
   color: #fff;
   grid-area: profession;
   margin: 0;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 .profile__info-button-edit:hover {
