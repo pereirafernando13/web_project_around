@@ -1,7 +1,9 @@
 // Variaveis PopuPerfil
+const popupProfile = document.querySelector(".popup-profile");
 const popup = document.querySelector(".popup");
 const editbutton = document.querySelector(".profile__info-button-edit");
 const closebutton = document.querySelector(".popup__form-button-close");
+const closePopupImgButton = document.querySelector(".popup__form-button-img");
 
 const saveButtonProfile = document.querySelector(".popup__form-button-save");
 
@@ -17,7 +19,7 @@ const buttonHeartLike = document.querySelectorAll(
 );
 
 // Variaveis Popup Add Card
-const popupImage = document.querySelector(".popup__image");
+const popupImage = document.querySelector(".popup-image");
 const addImageButton = document.querySelector(".profile__button");
 
 const inputTittle = document.querySelector("#tittle");
@@ -44,6 +46,14 @@ function closePopup() {
 }
 closebutton.addEventListener("click", closePopup);
 
+//Fechar pop with ESCAPE
+function closePopWithEsc(event) {
+  if (event.key == "Escape") {
+    popupProfile.style.display = "none";
+  }
+}
+document.addEventListener("keydown", closePopWithEsc);
+
 // Abrir/fechar Popup Cards
 function openPopupImg() {
   popupImage.classList.add("popup_change_display");
@@ -53,6 +63,7 @@ addImageButton.addEventListener("click", openPopupImg);
 function closePopupImg() {
   popupImage.classList.remove("popup_change_display");
 }
+closePopupImgButton.addEventListener("click", closePopupImg);
 
 //Fechar PopupIMGfull
 
@@ -60,6 +71,21 @@ function closeImgFull() {
   imgFull.style.display = "none";
 }
 closePopupImgFull.addEventListener("click", closeImgFull);
+
+//ferchar popup click
+popup.addEventListener("click", (event) => {
+  if (event.target.classList.contains("popup")) {
+    closePopup();
+  }
+});
+
+popupImage.addEventListener("click", (event) => {
+  if (event.target.classList.contains("popup-image")) closePopupImg();
+});
+
+imgFull.addEventListener("click", (event) => {
+  if (event.target.classList.contains("popup__imgfull-card")) closeImgFull();
+});
 
 // Atualizar dados do usuario
 function updateProfileInfo(event) {

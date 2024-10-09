@@ -12,26 +12,43 @@
   <body>
     <div class="page">
       <!--Popup perfil-->
-      <div class="popup">
+      <div class="popup popup-profile">
         <div class="popup__container">
           <h1 class="popup__header">Editar perfil</h1>
-          <form class="popup__form">
+          <form class="popup__form" novalidate>
             <button class="popup__form-button-close"></button>
-            <input
-              class="popup__form-input"
-              type="text"
-              placeholder="Nome"
-              value=""
-              id="name"
-            />
-            <input
-              class="popup__form-input"
-              type="text"
-              placeholder="Profissao"
-              value=""
-              id="profission"
-            />
-            <button type="submit" class="popup__form-button-save">
+            <div class="input__wrapper">
+              <input
+                class="popup__form-input"
+                type="text"
+                placeholder="Nome"
+                value=""
+                id="name"
+                maxlength="20"
+                minlength="2"
+                required
+              />
+              <p class="input__errorMessage"></p>
+            </div>
+
+            <div class="input__wrapper">
+              <input
+                class="popup__form-input"
+                type="text"
+                placeholder="Profissao"
+                value=""
+                id="profission"
+                maxlength="200"
+                minlength="2"
+                required
+              />
+              <p class="input__errorMessage"></p>
+            </div>
+            <button
+              type="submit"
+              class="popup__form-button-save form__submit"
+              disabled
+            >
               Salvar
             </button>
           </form>
@@ -39,29 +56,42 @@
       </div>
 
       <!--Popup form add image-->
-      <div class="popup__image popup">
+      <div class="popup popup-image">
         <div class="popup__container">
           <h1 class="popup__header">Novo local</h1>
-          <form class="popup__form">
-            <button class="popup__form-button-close"></button>
-            <input
-              class="popup__form-input"
-              type="text"
-              placeholder="Título"
-              value=""
-              id="tittle"
-            />
-            <input
-              class="popup__form-input"
-              type="url"
-              placeholder="Link da imagem"
-              value=""
-              id="url"
-            />
+          <form class="popup__form" novalidate>
+            <button
+              class="popup__form-button-close popup__form-button-img"
+            ></button>
+            <div class="input__wrapper">
+              <input
+                class="popup__form-input"
+                type="text"
+                placeholder="Título"
+                value=""
+                id="tittle"
+                maxlength="30"
+                minlength="2"
+                required
+              />
+              <p class="input__errorMessage"></p>
+            </div>
+            <div class="input__wrapper">
+              <input
+                class="popup__form-input"
+                type="url"
+                placeholder="Link da imagem"
+                value=""
+                id="url"
+                required
+              />
+              <p class="input__errorMessage"></p>
+            </div>
             <button
               type="submit"
-              class="popup__form-button-save"
+              class="popup__form-button-save form__submit"
               id="add-button"
+              disabled
             >
               Criar
             </button>
@@ -127,5 +157,6 @@
       </footer>
     </div>
     <script src="./scripts/index.js"></script>
+    <script src="./scripts/validate.js"></script>
   </body>
 </html>
