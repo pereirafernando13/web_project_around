@@ -15,7 +15,7 @@
       <div class="popup popup-profile">
         <div class="popup__container">
           <h1 class="popup__header">Editar perfil</h1>
-          <form class="popup__form">
+          <form class="popup__form" novalidate>
             <button class="popup__form-button-close"></button>
             <div class="input__wrapper">
               <input
@@ -44,7 +44,11 @@
               />
               <p class="input__errorMessage"></p>
             </div>
-            <button type="submit" class="popup__form-button-save form__submit">
+            <button
+              type="submit"
+              class="popup__form-button-save form__submit"
+              disabled
+            >
               Salvar
             </button>
           </form>
@@ -55,8 +59,10 @@
       <div class="popup popup-image">
         <div class="popup__container">
           <h1 class="popup__header">Novo local</h1>
-          <form class="popup__form">
-            <button class="popup__form-button-close"></button>
+          <form class="popup__form" novalidate>
+            <button
+              class="popup__form-button-close popup__form-button-img"
+            ></button>
             <div class="input__wrapper">
               <input
                 class="popup__form-input"
@@ -85,6 +91,7 @@
               type="submit"
               class="popup__form-button-save form__submit"
               id="add-button"
+              disabled
             >
               Criar
             </button>

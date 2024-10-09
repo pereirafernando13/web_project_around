@@ -3,6 +3,7 @@ const popupProfile = document.querySelector(".popup-profile");
 const popup = document.querySelector(".popup");
 const editbutton = document.querySelector(".profile__info-button-edit");
 const closebutton = document.querySelector(".popup__form-button-close");
+const closePopupImgButton = document.querySelector(".popup__form-button-img");
 
 const saveButtonProfile = document.querySelector(".popup__form-button-save");
 
@@ -62,6 +63,7 @@ addImageButton.addEventListener("click", openPopupImg);
 function closePopupImg() {
   popupImage.classList.remove("popup_change_display");
 }
+closePopupImgButton.addEventListener("click", closePopupImg);
 
 //Fechar PopupIMGfull
 
@@ -69,6 +71,21 @@ function closeImgFull() {
   imgFull.style.display = "none";
 }
 closePopupImgFull.addEventListener("click", closeImgFull);
+
+//ferchar popup click
+popup.addEventListener("click", (event) => {
+  if (event.target.classList.contains("popup")) {
+    closePopup();
+  }
+});
+
+popupImage.addEventListener("click", (event) => {
+  if (event.target.classList.contains("popup-image")) closePopupImg();
+});
+
+imgFull.addEventListener("click", (event) => {
+  if (event.target.classList.contains("popup__imgfull-card")) closeImgFull();
+});
 
 // Atualizar dados do usuario
 function updateProfileInfo(event) {

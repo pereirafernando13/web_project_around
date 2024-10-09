@@ -1,26 +1,30 @@
 function enableValidation(config) {
-  const formElement = document.querySelector(config.formSelector);
-  const inputs = formElement.querySelectorAll(config.inputSelector);
-  inputs.forEach((input) => {
-    input.addEventListener("input", () => {
-      const formButton = formElement.querySelector(config.submitButtonSelector);
-      const isValid = input.checkValidity();
-      const errorElement = input.nextElementSibling;
-      if (isValid) {
-        errorElement.textContent = "";
-        errorElement.classList.remove(config.errorClass);
-        input.classList.remove(config.inputErrorClass);
-      } else {
-        const errorMessage = input.validationMessage;
-        errorElement.textContent = errorMessage;
-        errorElement.classList.add(config.errorClass);
-        input.classList.add(config.inputErrorClass);
-        formButton.disabled = true;
-      }
-      const isFormValid = formElement.checkValidity();
-      if (isFormValid) {
-        formButton.disabled = false;
-      }
+  const formElements = document.querySelectorAll(config.formSelector);
+  formElements.forEach((formElement) => {
+    const inputs = formElement.querySelectorAll(config.inputSelector);
+    inputs.forEach((input) => {
+      input.addEventListener("input", () => {
+        const formButton = formElement.querySelector(
+          config.submitButtonSelector
+        );
+        const isValid = input.checkValidity();
+        const errorElement = input.nextElementSibling;
+        if (isValid) {
+          errorElement.textContent = "";
+          errorElement.classList.remove(config.errorClass);
+          input.classList.remove(config.inputErrorClass);
+        } else {
+          const errorMessage = input.validationMessage;
+          errorElement.textContent = errorMessage;
+          errorElement.classList.add(config.errorClass);
+          input.classList.add(config.inputErrorClass);
+          formButton.disabled = true;
+        }
+        const isFormValid = formElement.checkValidity();
+        if (isFormValid) {
+          formButton.disabled = false;
+        }
+      });
     });
   });
 }
