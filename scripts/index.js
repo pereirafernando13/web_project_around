@@ -1,4 +1,5 @@
 // Variaveis PopuPerfil
+const popupProfile = document.querySelector(".popup-profile");
 const popup = document.querySelector(".popup");
 const editbutton = document.querySelector(".profile__info-button-edit");
 const closebutton = document.querySelector(".popup__form-button-close");
@@ -17,7 +18,7 @@ const buttonHeartLike = document.querySelectorAll(
 );
 
 // Variaveis Popup Add Card
-const popupImage = document.querySelector(".popup__image");
+const popupImage = document.querySelector(".popup-image");
 const addImageButton = document.querySelector(".profile__button");
 
 const inputTittle = document.querySelector("#tittle");
@@ -43,6 +44,14 @@ function closePopup() {
   popup.classList.remove("popup_change_display");
 }
 closebutton.addEventListener("click", closePopup);
+
+//Fechar pop with ESCAPE
+function closePopWithEsc(event) {
+  if (event.key == "Escape") {
+    popupProfile.style.display = "none";
+  }
+}
+document.addEventListener("keydown", closePopWithEsc);
 
 // Abrir/fechar Popup Cards
 function openPopupImg() {
