@@ -75,6 +75,7 @@
   background: transparent url(../images/profile__buton-vetor.png) no-repeat
     center;
   border: 2px solid #fff;
+  margin-left: auto;
 }
 
 @media screen and (max-width: 920px) {

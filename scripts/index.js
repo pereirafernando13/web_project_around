@@ -49,7 +49,11 @@ closebutton.addEventListener("click", closePopup);
 //Fechar pop with ESCAPE
 function closePopWithEsc(event) {
   if (event.key == "Escape") {
-    popupProfile.style.display = "none";
+    const popupAll = document.querySelectorAll(".popup");
+    popupAll.forEach((popup) => {
+      popup.classList.remove("popup_change_display");
+      imgFull.style.display = "none";
+    });
   }
 }
 document.addEventListener("keydown", closePopWithEsc);
