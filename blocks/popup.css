@@ -72,16 +72,17 @@
 }
 
 .input__errorMessage {
-  display: none;
+  visibility: hidden;
   color: rgba(255, 0, 0, 1);
   font-size: 12px;
   margin: 0 36px 5px;
   max-width: 358px;
-  width: 80%;
+  width: 100%;
 }
 
 .input__errorMessage_block {
-  display: block;
+  visibility: visible;
+  height: 20px;
 }
 
 .invalid-input {
