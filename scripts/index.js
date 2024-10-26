@@ -1,3 +1,4 @@
+import Card from "./Card.js";
 // Variaveis PopuPerfil
 const popupProfile = document.querySelector(".popup-profile");
 const popup = document.querySelector(".popup");
@@ -100,22 +101,6 @@ function updateProfileInfo(event) {
 }
 saveButtonProfile.addEventListener("click", updateProfileInfo);
 
-//add card image
-function addCardImage(event) {
-  event.preventDefault();
-  if (inputTittle.value != "" && inputUrl.value != "") {
-    const newCard = createCard({
-      name: inputTittle.value,
-      link: inputUrl.value,
-    });
-    cards.prepend(newCard);
-    inputTittle.value = "";
-    inputUrl.value = "";
-  }
-  closePopupImg();
-}
-saveButton.addEventListener("click", addCardImage);
-
 // botao de like
 function heartLike(event) {
   event.target.classList.toggle("elements__element_button-heart-like");
@@ -154,70 +139,29 @@ const initialCards = [
   },
 ];
 
-//criar cada cartao (criar elemento html - template)
-function createCard(card) {
-  //pegar o template
-  const cardTemplate = document.querySelector("#element-template").content;
-  //fazer a copia
-  const elementCard = cardTemplate
-    .querySelector(".elements__element")
-    .cloneNode(true);
-  //pegar os elementos de dentro da copia
-  const cardTitle = elementCard.querySelector(".elements__element-title");
-  const cardImage = elementCard.querySelector(".elements__element-image");
-  const cardLink = elementCard.querySelector(".elements__element-image");
-  const cardTrash = elementCard.querySelector("elements-element-button-trash");
-  //popular os sub elementos
-  cardTitle.textContent = card.name;
-  cardImage.setAttribute("alt", card.name);
-  cardLink.setAttribute("src", card.link);
-
-  //pega a lista
-  const elements = document.querySelector(".elements");
-  //prepend
-  elements.prepend(elementCard);
-
-  //botao like
-  elementCard
-    .querySelector(".elements__element-button-heart")
-    .addEventListener("click", (event) => {
-      if (
-        event.target.getAttribute("src") ===
-        "./images/elements__image-heart-disble.png"
-      ) {
-        return event.target.setAttribute(
-          "src",
-          "./images/elements_element-button-heart-like.png"
-        );
-      }
-      return event.target.setAttribute(
-        "src",
-        "./images/elements__image-heart-disble.png"
-      );
-    });
-
-  //remove card
-  elementCard
-    .querySelector(".elements-element-button-trash")
-    .addEventListener("click", (event) => {
-      event.target.parentElement.remove();
-    });
-
-  //Abrir/fechar PopupImgFull
-  elementCard
-    .querySelector(".elements__element-image")
-    .addEventListener("click", (event) => {
-      openImgFull.setAttribute("alt", card.name);
-      openImgFull.setAttribute("src", card.link);
-      openImgFullTittle.textContent = card.name;
-
-      imgFull.style.display = "block";
-    });
-
-  return elementCard;
-}
 // Adicionar os cartoes a pagina
-initialCards.forEach((card) => {
-  const newCard = createCard(card);
+initialCards.forEach((cardContent) => {
+  const card = new Card(cardContent, ".element-template");
+  const newCard = card.createCard();
   cards.prepend(newCard);
 });
+
+//add card image
+function addCardImage(event) {
+  event.preventDefault();
+  if (inputTittle.value != "" && inputUrl.value != "") {
+    const card = new Card(
+      {
+        name: inputTittle.value,
+        link: inputUrl.value,
+      },
+      ".element-template"
+    );
+    const newCard = card.createCard();
+    cards.prepend(newCard);
+    inputTittle.value = "";
+    inputUrl.value = "";
+  }
+  closePopupImg();
+}
+saveButton.addEventListener("click", addCardImage);
