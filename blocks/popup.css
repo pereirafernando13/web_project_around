@@ -118,6 +118,10 @@
   border-radius: 2px solid #000;
 }
 
+.formButton_disabled {
+  background: rgba(0, 0, 0, 0.8);
+}
+
 .form__submit:disabled,
 .form__submit[disabled] {
   background-color: transparent;
