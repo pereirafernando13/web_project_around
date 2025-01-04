@@ -1,4 +1,6 @@
 import Card from "./Card.js";
+import FormValidation from "./FormValidation.js";
+
 // Variaveis PopuPerfil
 const popupProfile = document.querySelector(".popup-profile");
 const popup = document.querySelector(".popup");
