@@ -13,12 +13,6 @@
   display: none;
 }
 
-.popup_change_display {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
 .popup__container {
   max-width: 430px;
   width: 100%;
@@ -138,6 +132,12 @@
   height: 100%;
   z-index: 10;
   display: none;
+}
+
+.popup_change_display {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .popup__imgfull-card {

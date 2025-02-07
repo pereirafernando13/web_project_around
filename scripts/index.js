@@ -49,13 +49,18 @@ function closePopup() {
 }
 closebutton.addEventListener("click", closePopup);
 
+//Abrir/ popImgFull
+
+export function openFullImagPopup() {
+  imgFull.classList.add("popup_change_display");
+}
+
 //Fechar pop with ESCAPE
 function closePopWithEsc(event) {
   if (event.key == "Escape") {
     const popupAll = document.querySelectorAll(".popup");
     popupAll.forEach((popup) => {
       popup.classList.remove("popup_change_display");
-      imgFull.style.display = "none";
     });
   }
 }
@@ -75,7 +80,7 @@ closePopupImgButton.addEventListener("click", closePopupImg);
 //Fechar PopupIMGfull
 
 function closeImgFull() {
-  imgFull.style.display = "none";
+  imgFull.classList.remove("popup_change_display");
 }
 closePopupImgFull.addEventListener("click", closeImgFull);
 

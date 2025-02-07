@@ -1,3 +1,5 @@
+import { openFullImagPopup } from "./index.js";
+
 export default class Card {
   constructor(cardData, template) {
     this._cardData = cardData;
@@ -23,6 +25,8 @@ export default class Card {
     const elements = document.querySelector(".elements");
     elements.prepend(elementCard);
 
+    const openImgFull = document.querySelector(".popup__imgfull-imgbig");
+    const openImgFullTittle = document.querySelector(".popup__imgfull-tittle");
     //botao like
     elementCard
       .querySelector(".elements__element-button-heart")
@@ -53,11 +57,11 @@ export default class Card {
     elementCard
       .querySelector(".elements__element-image")
       .addEventListener("click", (event) => {
+        console.log(event.target);
         openImgFull.setAttribute("alt", this._cardData.name);
         openImgFull.setAttribute("src", this._cardData.link);
         openImgFullTittle.textContent = this._cardData.name;
-
-        imgFull.style.display = "block";
+        openFullImagPopup();
       });
 
     return elementCard;
