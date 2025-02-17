@@ -1,3 +1,4 @@
+import Section from "./Section.js";
 import Card from "./Card.js";
 import FormValidation from "./FormValidation.js";
 
@@ -147,11 +148,16 @@ const initialCards = [
 ];
 
 // Adicionar os cartoes a pagina
-initialCards.forEach((cardContent) => {
-  const card = new Card(cardContent, ".element-template");
-  const newCard = card.createCard();
-  cards.prepend(newCard);
-});
+function renderCard(card) {
+  initialCards.forEach((cardContent) => {
+    const card = new Card(cardContent, ".element-template");
+    const newCard = card.createCard();
+    cards.prepend(newCard);
+  });
+}
+
+const sectionCards = new Section({ items: initialCards, renderer: renderCard });
+sectionCards.renderItems();
 
 //add card image
 function addCardImage(event) {
