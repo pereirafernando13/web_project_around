@@ -1,6 +1,7 @@
 import Section from "./Section.js";
 import Card from "./Card.js";
 import FormValidation from "./FormValidation.js";
+import PopupWithImage from "./PopupWithImage.js";
 
 // Variaveis PopuPerfil
 const popupProfile = document.querySelector(".popup-profile");
@@ -36,8 +37,6 @@ const closePopupImgFull = document.querySelector(
   ".popup__imgfull-button-close"
 );
 const imgFull = document.querySelector(".popup__imgfull");
-const openImgFull = document.querySelector(".popup__imgfull-imgbig");
-const openImgFullTittle = document.querySelector(".popup__imgfull-tittle");
 
 // Abrir/fechar popperfil
 function openPopup() {
@@ -100,6 +99,12 @@ imgFull.addEventListener("click", (event) => {
   if (event.target.classList.contains("popup__imgfull-card")) closeImgFull();
 });
 
+// classe pops
+const popupImg = new PopupWithImage(
+  ".popup__imgfull-card",
+  ".popup__imgfull-imgbig",
+  ".popup__imgfull-tittle"
+);
 // Atualizar dados do usuario
 function updateProfileInfo(event) {
   event.preventDefault();
