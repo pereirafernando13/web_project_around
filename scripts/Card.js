@@ -1,69 +1,84 @@
 import { openFullImagPopup } from "./index.js";
 
 export default class Card {
-  constructor(cardData, template) {
-    this._cardData = cardData;
-    this._template = template;
+  constructor({ name, link, handleCardClick }, template) {
+    this._name = name;
+    this._link = link;
+    this._handleCardClick = handleCardClick;
+    this._templateHtml = template;
   }
-  createCard() {
-    const cardTemplate = document.querySelector(this._template).content;
-    const elementCard = cardTemplate
+
+  publicHandleCardClick = (evt) => {
+    this._handleCardClick(evt, this._title, this._link);
+  };
+
+  _setEventListeners = () => {
+    this._elementCard
       .querySelector(".elements__element")
-      .cloneNode(true);
-    elementCard.querySelector(".elements__element-title").textContent =
-      this._cardData.name;
-    elementCard
+      .addEventListener("click", this.publicHandleCardClick);
+  };
+
+  createCard() {
+    this._cardTemplate = document.querySelector("#card_template").content;
+    this._elementCard = this._cardTemplate.cloneNode(true);
+    this._elementCard.querySelector(".elements__element-title").textContent =
+      this._name;
+
+    this._elementCard
       .querySelector(".elements__element-image")
-      .setAttribute("alt", this._cardData.name);
-    elementCard
+      .setAttribute("alt", this._name);
+    this._elementCard
       .querySelector(".elements__element-image")
-      .setAttribute("src", this._cardData.link);
-    const cardTrash = elementCard.querySelector(
-      "elements-element-button-trash"
-    );
+      .setAttribute("src", this._link);
 
-    const elements = document.querySelector(".elements");
-    elements.prepend(elementCard);
+    // const cardTrash = this._elementCard.querySelector(
+    //   "elements-element-button-trash"
+    // );
 
-    const openImgFull = document.querySelector(".popup__imgfull-imgbig");
-    const openImgFullTittle = document.querySelector(".popup__imgfull-tittle");
-    //botao like
-    elementCard
-      .querySelector(".elements__element-button-heart")
-      .addEventListener("click", (event) => {
-        if (
-          event.target.getAttribute("src") ===
-          "./images/elements__image-heart-disble.png"
-        ) {
-          return event.target.setAttribute(
-            "src",
-            "./images/elements_element-button-heart-like.png"
-          );
-        }
-        return event.target.setAttribute(
-          "src",
-          "./images/elements__image-heart-disble.png"
-        );
-      });
+    this._setEventListeners();
 
-    //remove card
-    elementCard
-      .querySelector(".elements-element-button-trash")
-      .addEventListener("click", (event) => {
-        event.target.parentElement.remove();
-      });
+    // const elements = document.querySelector(".elements");
+    // elements.prepend(this._elementCard);
+    // //botao like
+    // this._elementCard
+    //   .querySelector(".elements__element-button-heart")
+    //   .addEventListener("click", (event) => {
+    //     if (
+    //       event.target.getAttribute("src") ===
+    //       "./images/elements__image-heart-disble.png"
+    //     ) {
+    //       return event.target.setAttribute(
+    //         "src",
+    //         "./images/elements_element-button-heart-like.png"
+    //       );
+    //     }
+    //     return event.target.setAttribute(
+    //       "src",
+    //       "./images/elements__image-heart-disble.png"
+    //     );
+    //   });
+
+    // //remove card
+    // this._elementCard
+    //   .querySelector(".elements-element-button-trash")
+    //   .addEventListener("click", (event) => {
+    //     event.target.parentElement.remove();
+    //   });
 
     //Abrir/fechar PopupImgFull
-    elementCard
-      .querySelector(".elements__element-image")
-      .addEventListener("click", (event) => {
-        console.log(event.target);
-        openImgFull.setAttribute("alt", this._cardData.name);
-        openImgFull.setAttribute("src", this._cardData.link);
-        openImgFullTittle.textContent = this._cardData.name;
-        openFullImagPopup();
-      });
+    // const openImgFull = document.querySelector(".popup__imgfull-imgbig");
+    // const openImgFullTittle = document.querySelector(".popup__imgfull-tittle");
 
-    return elementCard;
+    // this._elementCard
+    // .querySelector(".elements__element-image")
+    // .addEventListener("click", (event) => {
+    //   console.log(event.target);
+    //   openImgFull.setAttribute("alt", this._name);
+    //   openImgFull.setAttribute("src", this._link);
+    //   openImgFullTittle.textContent = this._name;
+    //   openFullImagPopup();
+    // });
+
+    return this._elementCard;
   }
 }

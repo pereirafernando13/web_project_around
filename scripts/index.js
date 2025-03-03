@@ -55,56 +55,6 @@ export function openFullImagPopup() {
   imgFull.classList.add("popup_change_display");
 }
 
-//Fechar pop with ESCAPE
-function closePopWithEsc(event) {
-  if (event.key == "Escape") {
-    const popupAll = document.querySelectorAll(".popup");
-    popupAll.forEach((popup) => {
-      popup.classList.remove("popup_change_display");
-    });
-  }
-}
-document.addEventListener("keydown", closePopWithEsc);
-
-// Abrir/fechar Popup Cards
-function openPopupImg() {
-  popupImage.classList.add("popup_change_display");
-}
-addImageButton.addEventListener("click", openPopupImg);
-
-function closePopupImg() {
-  popupImage.classList.remove("popup_change_display");
-}
-closePopupImgButton.addEventListener("click", closePopupImg);
-
-//Fechar PopupIMGfull
-
-function closeImgFull() {
-  imgFull.classList.remove("popup_change_display");
-}
-closePopupImgFull.addEventListener("click", closeImgFull);
-
-//ferchar popup click
-popup.addEventListener("click", (event) => {
-  if (event.target.classList.contains("popup")) {
-    closePopup();
-  }
-});
-
-popupImage.addEventListener("click", (event) => {
-  if (event.target.classList.contains("popup-image")) closePopupImg();
-});
-
-imgFull.addEventListener("click", (event) => {
-  if (event.target.classList.contains("popup__imgfull-card")) closeImgFull();
-});
-
-// classe pops
-const popupImg = new PopupWithImage(
-  ".popup__imgfull-card",
-  ".popup__imgfull-imgbig",
-  ".popup__imgfull-tittle"
-);
 // Atualizar dados do usuario
 function updateProfileInfo(event) {
   event.preventDefault();
@@ -152,16 +102,36 @@ const initialCards = [
   },
 ];
 
-// Adicionar os cartoes a pagina
-function renderCard(card) {
-  initialCards.forEach((cardContent) => {
-    const card = new Card(cardContent, ".element-template");
-    const newCard = card.createCard();
-    cards.prepend(newCard);
-  });
+function handleCardClick(evt, name, link) {
+  if (evt.target.classList.contains("card__image")) {
+    const popupWithImage = new PopupWithImage(
+      {
+        name: name,
+        link: link,
+      },
+      ".popup__imgfull"
+    );
+    popupWithImage.open();
+  }
 }
 
-const sectionCards = new Section({ items: initialCards, renderer: renderCard });
+function renderCard(cardContent) {
+  const card = new Card(
+    {
+      name: cardContent.name,
+      link: cardContent.link,
+      handleCardClick: handleCardClick,
+    },
+    "#card_template"
+  );
+  const newCard = card.createCard();
+  cards.prepend(newCard);
+}
+
+const sectionCards = new Section({
+  items: initialCards,
+  renderer: renderCard,
+});
 sectionCards.renderItems();
 
 //add card image
