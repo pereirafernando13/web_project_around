@@ -3,6 +3,7 @@ import Card from "./Card.js";
 import FormValidation from "./FormValidation.js";
 import PopupWithImage from "./PopupWithImage.js";
 import PopupWithForm from "./PopupWithForm.js";
+import UserInfo from "./UserInfo.js";
 
 // Variaveis PopuPerfil
 const popupProfile = document.querySelector(".popup-profile");
@@ -108,6 +109,11 @@ popupEditProfile.setEventListeners();
 const popupAddCard = new PopupWithForm(".popup-image", addCardImage);
 popupAddCard.setEventListeners();
 popupAddCard.close();
+
+const userInfo = new UserInfo({
+  nameSelector: ".profile__info-name",
+  jobSelector: ".profile__info-profession",
+});
 
 function handleCardClick(evt, name, link) {
   if (evt.target.classList.contains("card__image")) {
