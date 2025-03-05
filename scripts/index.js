@@ -2,6 +2,7 @@ import Section from "./Section.js";
 import Card from "./Card.js";
 import FormValidation from "./FormValidation.js";
 import PopupWithImage from "./PopupWithImage.js";
+import PopupWithForm from "./PopupWithForm.js";
 
 // Variaveis PopuPerfil
 const popupProfile = document.querySelector(".popup-profile");
@@ -56,8 +57,7 @@ export function openFullImagPopup() {
 }
 
 // Atualizar dados do usuario
-function updateProfileInfo(event) {
-  event.preventDefault();
+function updateProfileInfo() {
   profileInfo.textContent = inputName.value;
   profileProfission.textContent = inputProfission.value;
   closePopup();
@@ -101,6 +101,13 @@ const initialCards = [
     link: "https://practicum-content.s3.us-west-1.amazonaws.com/web-code/moved_lago.jpg",
   },
 ];
+
+const popupEditProfile = new PopupWithForm(".popup-profile", updateProfileInfo);
+popupEditProfile.setEventListeners();
+
+const popupAddCard = new PopupWithForm(".popup-image", addCardImage);
+popupAddCard.setEventListeners();
+popupAddCard.close();
 
 function handleCardClick(evt, name, link) {
   if (evt.target.classList.contains("card__image")) {

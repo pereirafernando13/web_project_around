@@ -9,10 +9,6 @@
   z-index: 10;
 }
 
-.popup_opened {
-  display: block;
-}
-
 .popup__image {
   display: none;
 }
