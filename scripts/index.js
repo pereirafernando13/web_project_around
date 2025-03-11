@@ -40,15 +40,6 @@ const closePopupImgFull = document.querySelector(
 const imgFull = document.querySelector(".popup__imgfull");
 
 // Abrir/fechar popperfil
-function openPopup() {
-  popup.classList.add("popup_change_display");
-}
-editbutton.addEventListener("click", openPopup);
-
-function closePopup() {
-  popup.classList.remove("popup_change_display");
-}
-closebutton.addEventListener("click", closePopup);
 
 //Abrir/ popImgFull
 
@@ -60,7 +51,6 @@ export function openFullImagPopup() {
 function updateProfileInfo() {
   profileInfo.textContent = inputName.value;
   profileProfission.textContent = inputProfission.value;
-  closePopup();
 }
 saveButtonProfile.addEventListener("click", updateProfileInfo);
 
@@ -101,13 +91,6 @@ const initialCards = [
     link: "https://practicum-content.s3.us-west-1.amazonaws.com/web-code/moved_lago.jpg",
   },
 ];
-
-const popupEditProfile = new PopupWithForm(".popup-profile", updateProfileInfo);
-popupEditProfile.setEventListeners();
-
-const popupAddCard = new PopupWithForm(".popup-image", addCardImage);
-popupAddCard.setEventListeners();
-popupAddCard.close();
 
 function handleCardClick(evt, name, link) {
   if (evt.target.classList.contains("card__image")) {
@@ -157,6 +140,6 @@ function addCardImage(event) {
     inputTittle.value = "";
     inputUrl.value = "";
   }
-  closePopupImg();
+  popupAddImag.close();
 }
 saveButton.addEventListener("click", addCardImage);
