@@ -92,6 +92,20 @@ const initialCards = [
   },
 ];
 
+//popupwithform
+
+const popupEditProfile = new PopupWithForm(".popup-profile", (data) => {});
+popupEditProfile.setEventListeners();
+editbutton.addEventListener("click", () => {
+  popupEditProfile.open();
+});
+
+const popupAddImag = new PopupWithForm(".popup-image", (data) => {});
+popupAddImag.setEventListeners();
+addImageButton.addEventListener("click", () => {
+  popupAddImag.open();
+});
+
 function handleCardClick(evt, name, link) {
   if (evt.target.classList.contains("card__image")) {
     const popupWithImage = new PopupWithImage(
