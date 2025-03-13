@@ -88,11 +88,12 @@ const initialCards = [
   },
 ];
 
+//userinfo
+
 const userInfo = new UserInfo({
   nameSelector: ".profile__info-name",
   jobSelector: ".profile__info-profession",
 });
-//userInfo.setUserInfo();
 
 //popupwithform
 
@@ -112,6 +113,7 @@ addImageButton.addEventListener("click", () => {
 });
 
 //popwithImage
+
 function handleCardClick(evt, name, link) {
   if (evt.target.classList.contains("card__image")) {
     const popupWithImage = new PopupWithImage(
