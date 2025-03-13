@@ -3,6 +3,7 @@ import Card from "./Card.js";
 import FormValidation from "./FormValidation.js";
 import PopupWithImage from "./PopupWithImage.js";
 import PopupWithForm from "./PopupWithForm.js";
+import UserInfo from "./UserInfo.js";
 
 // Variaveis PopuPerfil
 const popupProfile = document.querySelector(".popup-profile");
@@ -48,12 +49,6 @@ export function openFullImagPopup() {
 }
 
 // Atualizar dados do usuario
-function updateProfileInfo(event) {
-  event.preventDefault();
-  profileInfo.textContent = inputName.value;
-  profileProfission.textContent = inputProfission.value;
-}
-saveButtonProfile.addEventListener("click", updateProfileInfo);
 
 // botao de like
 function heartLike(event) {
@@ -93,9 +88,18 @@ const initialCards = [
   },
 ];
 
+const userInfo = new UserInfo({
+  nameSelector: ".profile__info-name",
+  jobSelector: ".profile__info-profession",
+});
+//userInfo.setUserInfo();
+
 //popupwithform
 
-const popupEditProfile = new PopupWithForm(".popup-profile", (data) => {});
+const popupEditProfile = new PopupWithForm(".popup-profile", (data) => {
+  console.log(data);
+  userInfo.setUserInfo(data);
+});
 popupEditProfile.setEventListeners();
 editbutton.addEventListener("click", () => {
   popupEditProfile.open();
@@ -107,6 +111,7 @@ addImageButton.addEventListener("click", () => {
   popupAddImag.open();
 });
 
+//popwithImage
 function handleCardClick(evt, name, link) {
   if (evt.target.classList.contains("card__image")) {
     const popupWithImage = new PopupWithImage(
@@ -120,6 +125,8 @@ function handleCardClick(evt, name, link) {
   }
 }
 
+// card render
+
 function renderCard(cardContent) {
   const card = new Card(
     {
@@ -132,6 +139,8 @@ function renderCard(cardContent) {
   const newCard = card.createCard();
   cards.prepend(newCard);
 }
+
+// section
 
 const sectionCards = new Section({
   items: initialCards,
