@@ -4,7 +4,6 @@ export default class Popup {
   }
 
   open() {
-    console.log(this._popupElement);
     this._popupElement.classList.add("popup_change_display");
   }
 

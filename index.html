@@ -26,7 +26,7 @@
                 id="name"
                 maxlength="20"
                 minlength="2"
-                name="username"
+                name="name"
                 required
               />
               <p class="input__errorMessage"></p>
@@ -41,7 +41,7 @@
                 id="profission"
                 maxlength="200"
                 minlength="2"
-                name="userjob"
+                name="about"
                 required
               />
               <p class="input__errorMessage"></p>
@@ -112,6 +112,49 @@
         </div>
       </div>
 
+      <!-- Popup de confirmação de exclusão -->
+      <div class="popup popup__card">
+        <div class="popup__container popup__card-delet">
+          <h3 class="popup__title">Tem certeza?</h3>
+          <form class="popup__input input-delet" novalidate>
+            <button type="submit" class="form__submit input__submit-delet">
+              Sim
+            </button>
+          </form>
+          <button class="popup__form-button-close popup__button-delet"></button>
+        </div>
+      </div>
+
+      <!-- Popup Edit Avatar-->
+      <div class="popup popup__avatar">
+        <div class="popup__container">
+          <h3 class="popup__title">Alterar a foto de perfil</h3>
+          <form class="popup__input input-avatar" novalidate>
+            <div class="input__wrapper">
+              <input
+                class="popup__form-input input__text-avatar"
+                id="url"
+                name="avatar"
+                type="url"
+                placeholder="Link de imagem"
+                required
+              />
+              <p class="input__errorMessage"></p>
+            </div>
+            <button
+              type="submit"
+              class="popup__form-button-save input__submit-avatar"
+              disabled
+            >
+              Salvar
+            </button>
+          </form>
+          <button
+            class="popup__form-button-close button-closeAvatar"
+            draggable="true"
+          ></button>
+        </div>
+      </div>
       <header class="header">
         <nav class="header__nav">
           <img
@@ -122,11 +165,15 @@
         </nav>
       </header>
       <section class="profile">
-        <img
-          src="./images/image__profile.png"
-          alt="imagem de perfil senhor"
-          class="profile__image"
-        />
+        <div class="profile__card-img">
+          <img
+            src="./images/image__profile.png"
+            alt="Jacques Cousteau"
+            class="profile__image"
+          />
+          <button class="profile__button-avt"></button>
+        </div>
+
         <div class="profile__info">
           <h1 class="profile__info-name">Jacques Cousteau</h1>
           <p class="profile__info-profession">Explorador</p>

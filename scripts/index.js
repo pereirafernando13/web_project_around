@@ -4,29 +4,11 @@ import FormValidation from "./FormValidation.js";
 import PopupWithImage from "./PopupWithImage.js";
 import PopupWithForm from "./PopupWithForm.js";
 import UserInfo from "./UserInfo.js";
+import Api from "./Api.js";
 
-// Variaveis PopuPerfil
-const popupProfile = document.querySelector(".popup-profile");
-const popup = document.querySelector(".popup");
 const editbutton = document.querySelector(".profile__info-button-edit");
-const closebutton = document.querySelector(".popup__form-button-close");
-const closePopupImgButton = document.querySelector(".popup__form-button-img");
-
-const saveButtonProfile = document.querySelector(".popup__form-button-save");
-
-const form = document.querySelector(".popup__form");
-const inputName = form.querySelector("#name");
-const inputProfission = form.querySelector("#profission");
-
-const profileInfo = document.querySelector(".profile__info-name");
-const profileProfission = document.querySelector(".profile__info-profession");
-
-const buttonHeartLike = document.querySelectorAll(
-  ".elements__element-button-heart"
-);
 
 // Variaveis Popup Add Card
-const popupImage = document.querySelector(".popup-image");
 const addImageButton = document.querySelector(".profile__button");
 
 const inputTittle = document.querySelector("#tittle");
@@ -34,31 +16,11 @@ const inputUrl = document.querySelector("#url");
 const saveButton = document.querySelector("#add-button");
 const cards = document.querySelector(".elements");
 
-//Variaveis PopupimgFull
-const closePopupImgFull = document.querySelector(
-  ".popup__imgfull-button-close"
-);
-const imgFull = document.querySelector(".popup__imgfull");
-
-// Abrir/fechar popperfil
-
 //Abrir/ popImgFull
 
 export function openFullImagPopup() {
   imgFull.classList.add("popup_change_display");
 }
-
-// Atualizar dados do usuario
-
-// botao de like
-function heartLike(event) {
-  event.target.classList.toggle("elements__element_button-heart-like");
-}
-
-buttonHeartLike.forEach((buttonLike) => {
-  buttonLike.addEventListener("click", heartLike);
-});
-
 // pegar o array
 
 const initialCards = [
@@ -88,6 +50,30 @@ const initialCards = [
   },
 ];
 
+// Api
+
+const api = new Api({
+  baseUrl: "https://around-api.pt-br.tripleten-services.com/v1",
+  headers: {
+    authorization: "ca2b55d6-3ffc-43fa-acc3-a4c30735379b",
+    "Content-Type": "application/json",
+  },
+});
+
+//inicialcards
+let cardSection;
+
+api
+  .getInicialCards()
+  .then((cards) => {
+    cardSection = new Section({
+      items: cards,
+      renderer: renderCard,
+    });
+    cardSection.renderItems();
+  })
+  .catch((err) => console.error(err));
+
 //userinfo
 
 const userInfo = new UserInfo({
@@ -95,11 +81,31 @@ const userInfo = new UserInfo({
   jobSelector: ".profile__info-profession",
 });
 
+api
+  .getUserInfo()
+  .then((data) => {
+    userInfo.setUserInfo({
+      username: data.name,
+      userjob: data.about,
+    });
+  })
+  .catch((err) => console.error(err));
+
 //popupwithform
 
 const popupEditProfile = new PopupWithForm(".popup-profile", (data) => {
-  console.log(data);
-  userInfo.setUserInfo(data);
+  console.log("Dados enviados:", data);
+  api
+    .updateUserInfo({ name: data.name, about: data.about })
+    .then((updateData) => {
+      userInfo.setUserInfo({
+        username: updateData.name,
+        userjob: updateData.about,
+      });
+    })
+    .catch((err) => {
+      console.error("Erro ao atualizar perfil:", err);
+    });
 });
 popupEditProfile.setEventListeners();
 editbutton.addEventListener("click", () => {
@@ -114,17 +120,39 @@ addImageButton.addEventListener("click", () => {
 
 //popwithImage
 
-function handleCardClick(evt, name, link) {
+function handleCardClick(evt, cardContent) {
   if (evt.target.classList.contains("card__image")) {
     const popupWithImage = new PopupWithImage(
       {
-        name: name,
-        link: link,
+        name: cardContent.name,
+        link: cardContent.link,
       },
       ".popup__imgfull"
     );
     popupWithImage.open();
   }
+  if (evt.target.classList.contains("elements-element-button-trash")) {
+    api.deleteCard(cardContent._id).then(() => {
+      evt.target.parentElement.remove();
+    });
+  }
+  if (
+    evt.target.getAttribute("src") ===
+    "./images/elements__image-heart-disble.png"
+  ) {
+    api.likedCard(cardContent._id).then(() => {
+      return evt.target.setAttribute(
+        "src",
+        "./images/elements_element-button-heart-like.png"
+      );
+    });
+  }
+  api.unlikedCard(cardContent._id).then(() => {
+    return evt.target.setAttribute(
+      "src",
+      "./images/elements__image-heart-disble.png"
+    );
+  });
 }
 
 // card render
@@ -132,8 +160,7 @@ function handleCardClick(evt, name, link) {
 function renderCard(cardContent) {
   const card = new Card(
     {
-      name: cardContent.name,
-      link: cardContent.link,
+      cardContent,
       handleCardClick: handleCardClick,
     },
     "#card_template"
@@ -142,30 +169,26 @@ function renderCard(cardContent) {
   cards.prepend(newCard);
 }
 
-// section
-
-const sectionCards = new Section({
-  items: initialCards,
-  renderer: renderCard,
-});
-sectionCards.renderItems();
-
 //add card image
 function addCardImage(event) {
   event.preventDefault();
-  if (inputTittle.value != "" && inputUrl.value != "") {
-    const card = new Card(
-      {
-        name: inputTittle.value,
-        link: inputUrl.value,
-      },
-      ".element-template"
-    );
-    const newCard = card.createCard();
-    cards.prepend(newCard);
-    inputTittle.value = "";
-    inputUrl.value = "";
-  }
-  popupAddImag.close();
+  const name = inputTittle.value;
+  const link = inputUrl.value;
+  api.newCard({ name, link }).then((cardContent) => {
+    if (inputTittle.value != "" && inputUrl.value != "") {
+      const card = new Card(
+        {
+          cardContent,
+          handleCardClick,
+        },
+        ".element-template"
+      );
+      const newCard = card.createCard();
+      cards.prepend(newCard);
+      inputTittle.value = "";
+      inputUrl.value = "";
+    }
+    popupAddImag.close();
+  });
 }
 saveButton.addEventListener("click", addCardImage);

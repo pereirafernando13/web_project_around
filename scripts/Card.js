@@ -1,15 +1,16 @@
 import { openFullImagPopup } from "./index.js";
 
 export default class Card {
-  constructor({ name, link, handleCardClick }, template) {
-    this._name = name;
-    this._link = link;
+  constructor({ cardContent, handleCardClick }, template) {
+    this._cardContent = cardContent;
+    this._name = cardContent.name;
+    this._link = cardContent.link;
     this._handleCardClick = handleCardClick;
     this._templateHtml = template;
   }
 
   publicHandleCardClick = (evt) => {
-    this._handleCardClick(evt, this._title, this._link);
+    this._handleCardClick(evt, this._cardContent);
   };
 
   _setEventListeners = () => {
@@ -32,33 +33,6 @@ export default class Card {
       .setAttribute("src", this._link);
 
     this._setEventListeners();
-
-    // //botao like
-    this._elementCard
-      .querySelector(".elements__element-button-heart")
-      .addEventListener("click", (event) => {
-        if (
-          event.target.getAttribute("src") ===
-          "./images/elements__image-heart-disble.png"
-        ) {
-          return event.target.setAttribute(
-            "src",
-            "./images/elements_element-button-heart-like.png"
-          );
-        }
-        return event.target.setAttribute(
-          "src",
-          "./images/elements__image-heart-disble.png"
-        );
-      });
-
-    // //remove card
-    this._elementCard
-      .querySelector(".elements-element-button-trash")
-      .addEventListener("click", (event) => {
-        event.target.parentElement.remove();
-      });
-
     return this._elementCard;
   }
 }
