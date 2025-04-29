@@ -5,6 +5,7 @@ import PopupWithImage from "./PopupWithImage.js";
 import PopupWithForm from "./PopupWithForm.js";
 import UserInfo from "./UserInfo.js";
 import Api from "./Api.js";
+import PopupWithConfirmation from "./PopupWithConfirmation.js";
 
 const editbutton = document.querySelector(".profile__info-button-edit");
 
@@ -91,6 +92,11 @@ api
   })
   .catch((err) => console.error(err));
 
+//popwithconfirmation
+
+const popupDeleteConfirmation = new PopupWithConfirmation(".popup__card");
+popupDeleteConfirmation.setEventListeners();
+
 //popupwithform
 
 const popupEditProfile = new PopupWithForm(".popup-profile", (data) => {
@@ -118,6 +124,14 @@ addImageButton.addEventListener("click", () => {
   popupAddImag.open();
 });
 
+//Editar Avatar
+
+const popupAvatar = new PopupWithForm(".popup__avatar");
+
+const avatarButton = document.querySelector(".profile__button-avt");
+avatarButton.addEventListener("click", () => {
+  popupAvatar.open();
+});
 //popwithImage
 
 function handleCardClick(evt, cardContent) {
@@ -132,8 +146,11 @@ function handleCardClick(evt, cardContent) {
     popupWithImage.open();
   }
   if (evt.target.classList.contains("elements-element-button-trash")) {
-    api.deleteCard(cardContent._id).then(() => {
-      evt.target.parentElement.remove();
+    popupDeleteConfirmation.open();
+    popupDeleteConfirmation.setSubmitDelete(() => {
+      api.deleteCard(cardContent._id).then(() => {
+        evt.target.parentElement.remove();
+      });
     });
   }
   if (

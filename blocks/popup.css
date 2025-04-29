@@ -9,12 +9,6 @@
   z-index: 10;
 }
 
-.popup_opened {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
 .popup__image {
   display: none;
 }
