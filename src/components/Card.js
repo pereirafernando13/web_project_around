@@ -1,5 +1,3 @@
-import { openFullImagPopup } from "./index.js";
-
 export default class Card {
   constructor({ cardContent, handleCardClick }, template) {
     this._cardContent = cardContent;

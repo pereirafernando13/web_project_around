@@ -26,7 +26,7 @@
 }
 
 .elements-element-button-trash {
-  background: transparent url(/images/button__Trash.png) no-repeat;
+  background: transparent url(/src/images/button__Trash.png) no-repeat;
   background-size: contain;
   width: 18px;
   height: 19.3px;

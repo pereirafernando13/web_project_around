@@ -1,11 +1,11 @@
-import Section from "./Section.js";
-import Card from "./Card.js";
-import FormValidation from "./FormValidation.js";
-import PopupWithImage from "./PopupWithImage.js";
-import PopupWithForm from "./PopupWithForm.js";
-import UserInfo from "./UserInfo.js";
-import Api from "./Api.js";
-import PopupWithConfirmation from "./PopupWithConfirmation.js";
+import Section from "../components/Section.js";
+import Card from "../components/Card.js";
+import FormValidation from "../components/FormValidation.js";
+import PopupWithImage from "../components/PopupWithImage.js";
+import PopupWithForm from "../components/PopupWithForm.js";
+import UserInfo from "../components/UserInfo.js";
+import Api from "../components/Api.js";
+import PopupWithConfirmation from "../components/PopupWithConfirmation.js";
 
 const editbutton = document.querySelector(".profile__info-button-edit");
 
