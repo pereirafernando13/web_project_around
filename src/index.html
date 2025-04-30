@@ -49,6 +49,7 @@
             <button
               type="submit"
               class="popup__form-button-save form__submit"
+              id="add-button-prof"
               disabled
             >
               Salvar
@@ -61,7 +62,7 @@
       <div class="popup popup-image">
         <div class="popup__container">
           <h1 class="popup__header">Novo local</h1>
-          <form class="popup__form" novalidate>
+          <form class="popup__form" id="popupform" novalidate>
             <button
               class="popup__form-button-close popup__form-button-img"
             ></button>
@@ -70,7 +71,6 @@
                 class="popup__form-input"
                 type="text"
                 placeholder="Título"
-                value=""
                 id="tittle"
                 maxlength="30"
                 minlength="2"
@@ -83,7 +83,6 @@
                 class="popup__form-input"
                 type="url"
                 placeholder="Link da imagem"
-                value=""
                 id="url"
                 required
               />

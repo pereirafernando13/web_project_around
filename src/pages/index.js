@@ -8,12 +8,11 @@ import Api from "../components/Api.js";
 import PopupWithConfirmation from "../components/PopupWithConfirmation.js";
 
 const editbutton = document.querySelector(".profile__info-button-edit");
+const formbutton = document.querySelector("#popupform");
 
 // Variaveis Popup Add Card
 const addImageButton = document.querySelector(".profile__button");
 
-const inputTittle = document.querySelector("#tittle");
-const inputUrl = document.querySelector("#url");
 const saveButton = document.querySelector("#add-button");
 const cards = document.querySelector(".elements");
 
@@ -101,6 +100,8 @@ popupDeleteConfirmation.setEventListeners();
 
 const popupEditProfile = new PopupWithForm(".popup-profile", (data) => {
   console.log("Dados enviados:", data);
+  const buttonProfile = document.querySelector("#add-button-prof");
+  buttonProfile.textContent = "Salvando...";
   api
     .updateUserInfo({ name: data.name, about: data.about })
     .then((updateData) => {
@@ -111,6 +112,9 @@ const popupEditProfile = new PopupWithForm(".popup-profile", (data) => {
     })
     .catch((err) => {
       console.error("Erro ao atualizar perfil:", err);
+    })
+    .finally(() => {
+      buttonProfile.textContent = "Salvar";
     });
 });
 popupEditProfile.setEventListeners();
@@ -144,16 +148,14 @@ function handleCardClick(evt, cardContent) {
       ".popup__imgfull"
     );
     popupWithImage.open();
-  }
-  if (evt.target.classList.contains("elements-element-button-trash")) {
+  } else if (evt.target.classList.contains("elements-element-button-trash")) {
     popupDeleteConfirmation.open();
     popupDeleteConfirmation.setSubmitDelete(() => {
       api.deleteCard(cardContent._id).then(() => {
         evt.target.parentElement.remove();
       });
     });
-  }
-  if (
+  } else if (
     evt.target.getAttribute("src") ===
     "./images/elements__image-heart-disble.png"
   ) {
@@ -163,13 +165,14 @@ function handleCardClick(evt, cardContent) {
         "./images/elements_element-button-heart-like.png"
       );
     });
+  } else {
+    api.unlikedCard(cardContent._id).then(() => {
+      return evt.target.setAttribute(
+        "src",
+        "./images/elements__image-heart-disble.png"
+      );
+    });
   }
-  api.unlikedCard(cardContent._id).then(() => {
-    return evt.target.setAttribute(
-      "src",
-      "./images/elements__image-heart-disble.png"
-    );
-  });
 }
 
 // card render
@@ -189,23 +192,35 @@ function renderCard(cardContent) {
 //add card image
 function addCardImage(event) {
   event.preventDefault();
+  console.log(event.target);
+  const inputTittle = document.querySelector("#tittle");
+  const inputUrl = document.querySelector("#url");
   const name = inputTittle.value;
   const link = inputUrl.value;
-  api.newCard({ name, link }).then((cardContent) => {
-    if (inputTittle.value != "" && inputUrl.value != "") {
-      const card = new Card(
-        {
-          cardContent,
-          handleCardClick,
-        },
-        ".element-template"
-      );
-      const newCard = card.createCard();
-      cards.prepend(newCard);
-      inputTittle.value = "";
-      inputUrl.value = "";
-    }
-    popupAddImag.close();
-  });
+  console.log(inputTittle.value);
+  const buttonImg = document.querySelector("#add-button");
+  console.log(buttonImg);
+  buttonImg.textContent = "Criando...";
+  api
+    .newCard({ name, link })
+    .then((cardContent) => {
+      if (inputTittle.value != "" && inputUrl.value != "") {
+        const card = new Card(
+          {
+            cardContent,
+            handleCardClick,
+          },
+          ".element-template"
+        );
+        const newCard = card.createCard();
+        cards.prepend(newCard);
+        inputTittle.value = "";
+        inputUrl.value = "";
+      }
+    })
+    .finally(() => {
+      popupAddImag.close();
+      buttonImg.textContent = "Criar";
+    });
 }
-saveButton.addEventListener("click", addCardImage);
+formbutton.addEventListener("submit", addCardImage);
