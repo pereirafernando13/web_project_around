@@ -114,6 +114,7 @@ const popupEditProfile = new PopupWithForm(".popup-profile", (data) => {
       console.error("Erro ao atualizar perfil:", err);
     })
     .finally(() => {
+      popupEditProfile.close();
       buttonProfile.textContent = "Salvar";
     });
 });
