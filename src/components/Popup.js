@@ -21,6 +21,7 @@ export default class Popup {
 
   _handleClickClose(evt) {
     if (
+      evt.target.classList.contains("popup__form-button-close") ||
       evt.target.classList.contains("popup__imgfull-button-close") ||
       evt.target.classList.contains("popup_change_display")
     ) {

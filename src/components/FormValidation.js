@@ -34,6 +34,8 @@ export default class FormValidation {
     const button = this._formElement.querySelector(
       this._config.submitButtonSelector
     );
+    console.log(this._formElement);
+    console.log(button);
     button.classList.add(this._config.inactiveButtonClass);
     button.setAttribute("disabled", true);
   }

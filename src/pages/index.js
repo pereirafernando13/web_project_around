@@ -79,6 +79,7 @@ api
 const userInfo = new UserInfo({
   nameSelector: ".profile__info-name",
   jobSelector: ".profile__info-profession",
+  avatarSelector: ".profile__image",
 });
 
 api
@@ -99,7 +100,6 @@ popupDeleteConfirmation.setEventListeners();
 //popupwithform
 
 const popupEditProfile = new PopupWithForm(".popup-profile", (data) => {
-  console.log("Dados enviados:", data);
   const buttonProfile = document.querySelector("#add-button-prof");
   buttonProfile.textContent = "Salvando...";
   api
@@ -131,12 +131,33 @@ addImageButton.addEventListener("click", () => {
 
 //Editar Avatar
 
-const popupAvatar = new PopupWithForm(".popup__avatar");
+const popupAvatar = new PopupWithForm(".popup__avatar", editAvatar);
 
 const avatarButton = document.querySelector(".profile__button-avt");
 avatarButton.addEventListener("click", () => {
   popupAvatar.open();
 });
+popupAvatar.setEventListeners();
+
+function editAvatar(data) {
+  api
+    .setAvatar(data.avatar)
+    .then((info) => {
+      console.log(info);
+      userInfo.setUserInfo({
+        username: info.name,
+        userjob: info.about,
+        useravatar: info.avatar,
+      });
+    })
+    .finally(() => {
+      saveAvatar.textContent = "Salvar";
+      popupAvatar.close();
+    });
+}
+const saveAvatar = document.querySelector(".input__submit-avatar");
+// saveAvatar.textContent = "Salvando...";
+
 //popwithImage
 
 function handleCardClick(evt, cardContent) {
@@ -193,7 +214,6 @@ function renderCard(cardContent) {
 //add card image
 function addCardImage(event) {
   event.preventDefault();
-  console.log(event.target);
   const inputTittle = document.querySelector("#tittle");
   const inputUrl = document.querySelector("#url");
   const name = inputTittle.value;
